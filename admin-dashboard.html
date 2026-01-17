@@ -1,0 +1,1325 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Lukeshwar Store</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+        }
+
+        /* Header */
+        .admin-header {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        .admin-navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .admin-logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .admin-logo i {
+            color: #ffd700;
+        }
+
+        .admin-actions {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .btn {
+            padding: 8px 20px;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(to right, #667eea, #764ba2);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-danger {
+            background: linear-gradient(to right, #ff6b6b, #ee5a52);
+            color: white;
+        }
+
+        .btn-danger:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 107, 107, 0.4);
+        }
+
+        /* Dashboard Layout */
+        .dashboard {
+            padding: 2rem 0;
+        }
+
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: 2rem;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            background: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            height: fit-content;
+        }
+
+        .sidebar ul {
+            list-style: none;
+        }
+
+        .sidebar ul li {
+            margin-bottom: 1rem;
+        }
+
+        .sidebar ul li a {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #333;
+            text-decoration: none;
+            padding: 12px 15px;
+            border-radius: 8px;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+
+        .sidebar ul li a:hover,
+        .sidebar ul li a.active {
+            background: linear-gradient(to right, #667eea, #764ba2);
+            color: white;
+        }
+
+        /* Dashboard Content */
+        .dashboard-content {
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            min-height: 500px;
+        }
+
+        /* Stats Cards */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        .stat-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            opacity: 0.8;
+        }
+
+        /* Tables */
+        .table-container {
+            overflow-x: auto;
+            margin-top: 2rem;
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+
+        .data-table th,
+        .data-table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .data-table th {
+            background: #f8f9fa;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .data-table tr:hover {
+            background: #f8f9fa;
+        }
+
+        /* Status Badges */
+        .status-badge {
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            display: inline-block;
+        }
+
+        .status-pending {
+            background: #ffeaa7;
+            color: #e17055;
+        }
+
+        .status-processing {
+            background: #74b9ff;
+            color: #0984e3;
+        }
+
+        .status-completed {
+            background: #55efc4;
+            color: #00b894;
+        }
+
+        .status-cancelled {
+            background: #fd79a8;
+            color: #e84393;
+        }
+
+        /* Action Buttons */
+        .action-buttons {
+            display: flex;
+            gap: 5px;
+        }
+
+        .btn-sm {
+            padding: 5px 10px;
+            font-size: 0.8rem;
+        }
+
+        /* Forms */
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        /* Image Upload - ONLY 1 IMAGE REQUIRED */
+        .image-upload-container {
+            border: 2px dashed #ddd;
+            padding: 2rem;
+            text-align: center;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: border-color 0.3s;
+            margin-bottom: 1rem;
+        }
+
+        .image-upload-container:hover {
+            border-color: #667eea;
+        }
+
+        .image-upload-container input[type="file"] {
+            display: none;
+        }
+
+        .image-preview {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 1rem;
+        }
+
+        .image-preview img {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 5px;
+            border: 2px solid #ddd;
+        }
+
+        .image-count {
+            margin-top: 10px;
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            max-width: 800px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            border-bottom: 2px solid #f1f1f1;
+            padding-bottom: 1rem;
+        }
+
+        .modal-header h2 {
+            color: #333;
+        }
+
+        .close-btn {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #666;
+        }
+
+        /* Alert Messages */
+        .alert {
+            padding: 1rem;
+            border-radius: 5px;
+            margin-bottom: 1rem;
+            display: none;
+        }
+
+        .alert-success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .alert-error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .dashboard-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .admin-navbar {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .data-table {
+                font-size: 0.9rem;
+            }
+        }
+
+        /* Tabs */
+        .tabs {
+            display: flex;
+            border-bottom: 2px solid #f1f1f1;
+            margin-bottom: 2rem;
+        }
+
+        .tab {
+            padding: 1rem 2rem;
+            cursor: pointer;
+            font-weight: 600;
+            color: #666;
+            border-bottom: 2px solid transparent;
+            transition: all 0.3s;
+        }
+
+        .tab:hover {
+            color: #667eea;
+        }
+
+        .tab.active {
+            color: #667eea;
+            border-bottom: 2px solid #667eea;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* Toast Notification */
+        .toast {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #4CAF50;
+            color: white;
+            padding: 1rem;
+            border-radius: 5px;
+            z-index: 10000;
+            animation: slideIn 0.3s ease;
+            display: none;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        /* Order Details */
+        .order-details {
+            background: #f8f9fa;
+            padding: 1rem;
+            border-radius: 5px;
+            margin: 10px 0;
+        }
+
+        .order-item {
+            border-left: 3px solid #667eea;
+            padding-left: 10px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Toast Notification -->
+    <div id="toast" class="toast"></div>
+
+    <!-- Admin Header -->
+    <header class="admin-header">
+        <div class="container">
+            <nav class="admin-navbar">
+                <div class="admin-logo">
+                    <i class="fas fa-user-shield"></i>
+                    Admin Dashboard
+                </div>
+                <div class="admin-actions">
+                    <a href="index.html" class="btn btn-primary">
+                        <i class="fas fa-store"></i> View Store
+                    </a>
+                    <button onclick="logoutAdmin()" class="btn btn-danger">
+                        <i class="fas fa-sign-out-alt"></i> Logout
+                    </button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Dashboard -->
+    <section class="dashboard">
+        <div class="container">
+            <div class="dashboard-grid">
+                <!-- Sidebar -->
+                <aside class="sidebar">
+                    <ul>
+                        <li><a href="#" class="active" onclick="showTab('dashboard')">
+                            <i class="fas fa-tachometer-alt"></i> Dashboard
+                        </a></li>
+                        <li><a href="#" onclick="showTab('products')">
+                            <i class="fas fa-box"></i> Manage Products
+                        </a></li>
+                        <li><a href="#" onclick="showTab('orders')">
+                            <i class="fas fa-shopping-cart"></i> Orders
+                        </a></li>
+                        <li><a href="#" onclick="showTab('users')">
+                            <i class="fas fa-users"></i> Users
+                        </a></li>
+                        <li><a href="#" onclick="showTab('messages')">
+                            <i class="fas fa-envelope"></i> Messages
+                        </a></li>
+                        <li><a href="#" onclick="showTab('settings')">
+                            <i class="fas fa-cog"></i> Settings
+                        </a></li>
+                    </ul>
+                </aside>
+
+                <!-- Main Content -->
+                <main class="dashboard-content">
+                    <!-- Dashboard Tab -->
+                    <div id="dashboardTab" class="tab-content active">
+                        <h1>Welcome, Admin</h1>
+                        <p>Manage your store efficiently from this dashboard.</p>
+                        
+                        <!-- Stats -->
+                        <div class="stats-grid">
+                            <div class="stat-card">
+                                <div class="stat-icon">
+                                    <i class="fas fa-box"></i>
+                                </div>
+                                <div class="stat-number" id="totalProducts">0</div>
+                                <div class="stat-label">Total Products</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-icon">
+                                    <i class="fas fa-shopping-cart"></i>
+                                </div>
+                                <div class="stat-number" id="totalOrders">0</div>
+                                <div class="stat-label">Total Orders</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-icon">
+                                    <i class="fas fa-users"></i>
+                                </div>
+                                <div class="stat-number" id="totalUsers">0</div>
+                                <div class="stat-label">Total Users</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-icon">
+                                    <i class="fas fa-rupee-sign"></i>
+                                </div>
+                                <div class="stat-number" id="totalRevenue">0</div>
+                                <div class="stat-label">Total Revenue</div>
+                            </div>
+                        </div>
+
+                        <!-- Recent Orders -->
+                        <h2 style="margin-top: 2rem;">Recent Orders</h2>
+                        <div class="table-container">
+                            <table class="data-table" id="recentOrdersTable">
+                                <thead>
+                                    <tr>
+                                        <th>Order ID</th>
+                                        <th>Customer</th>
+                                        <th>Amount</th>
+                                        <th>Status</th>
+                                        <th>Date</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!-- Orders will be loaded here -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Products Tab -->
+                    <div id="productsTab" class="tab-content">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
+                            <h1>Manage Products</h1>
+                            <button onclick="showAddProductModal()" class="btn btn-primary">
+                                <i class="fas fa-plus"></i> Add Product
+                            </button>
+                        </div>
+                        
+                        <div class="table-container">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>Image</th>
+                                        <th>Name</th>
+                                        <th>Description</th>
+                                        <th>Price</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="productsTable">
+                                    <!-- Products will be loaded here -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Orders Tab -->
+                    <div id="ordersTab" class="tab-content">
+                        <h1 style="margin-bottom: 2rem;">All Orders</h1>
+                        
+                        <div class="table-container">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>Order ID</th>
+                                        <th>Customer</th>
+                                        <th>Phone</th>
+                                        <th>Address</th>
+                                        <th>Amount</th>
+                                        <th>Payment</th>
+                                        <th>Status</th>
+                                        <th>Details</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="ordersTable">
+                                    <!-- Orders will be loaded here -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Users Tab -->
+                    <div id="usersTab" class="tab-content">
+                        <h1 style="margin-bottom: 2rem;">All Users</h1>
+                        
+                        <div class="table-container">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Email</th>
+                                        <th>Phone</th>
+                                        <th>Address</th>
+                                        <th>Pincode</th>
+                                        <th>Orders</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="usersTable">
+                                    <!-- Users will be loaded here -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Messages Tab -->
+                    <div id="messagesTab" class="tab-content">
+                        <h1 style="margin-bottom: 2rem;">Contact Messages</h1>
+                        
+                        <div class="table-container">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Email</th>
+                                        <th>Message</th>
+                                        <th>Date</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="messagesTable">
+                                    <!-- Messages will be loaded here -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Settings Tab -->
+                    <div id="settingsTab" class="tab-content">
+                        <h1>Store Settings</h1>
+                        
+                        <div class="form-group">
+                            <label>Store Name</label>
+                            <input type="text" id="storeName" value="Lukeshwar Store">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Admin Email (For Contact)</label>
+                            <input type="email" id="storeEmail" value="lukeshwars849@gmail.com">
+                            <small style="color: #666;">This email is hidden from users but used for contact</small>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Store Phone</label>
+                            <input type="tel" id="storePhone" value="+91 1234567890">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Store Address</label>
+                            <textarea id="storeAddress">123 Shopping Street, City, Country</textarea>
+                        </div>
+                        
+                        <button onclick="saveSettings()" class="btn btn-primary">
+                            <i class="fas fa-save"></i> Save Settings
+                        </button>
+                    </div>
+                </main>
+            </div>
+        </div>
+    </section>
+
+    <!-- Add Product Modal - ONLY 1 IMAGE REQUIRED -->
+    <div id="addProductModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Add New Product</h2>
+                <button class="close-btn" onclick="closeModal('addProductModal')">&times;</button>
+            </div>
+            <div class="alert" id="productAlert"></div>
+            <form id="addProductForm">
+                <div class="form-group">
+                    <label for="productName">Product Name *</label>
+                    <input type="text" id="productName" required>
+                </div>
+                <div class="form-group">
+                    <label for="productDescription">Description *</label>
+                    <textarea id="productDescription" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="productPrice">Price (₹) *</label>
+                    <input type="number" id="productPrice" required step="0.01" min="1">
+                </div>
+                <div class="form-group">
+                    <label>Product Image * (Upload at least 1 image)</label>
+                    <div class="image-upload-container" onclick="document.getElementById('productImages').click()">
+                        <i class="fas fa-cloud-upload-alt" style="font-size: 2rem; color: #667eea; margin-bottom: 1rem;"></i>
+                        <p>Click to upload image</p>
+                        <p style="font-size: 0.9rem; color: #666;">Upload product image</p>
+                        <div class="image-count" id="imageCount">No image selected</div>
+                    </div>
+                    <input type="file" id="productImages" accept="image/*" style="display: none;" onchange="previewImages(event)">
+                    <div class="image-preview" id="imagePreview"></div>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%;">Add Product</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Order Details Modal -->
+    <div id="orderDetailsModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Order Details</h2>
+                <button class="close-btn" onclick="closeModal('orderDetailsModal')">&times;</button>
+            </div>
+            <div id="orderDetailsContent">
+                <!-- Order details will be loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit Order Status Modal -->
+    <div id="editOrderModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Update Order Status</h2>
+                <button class="close-btn" onclick="closeModal('editOrderModal')">&times;</button>
+            </div>
+            <div class="alert" id="orderAlert"></div>
+            <form id="editOrderForm">
+                <input type="hidden" id="editOrderId">
+                <div class="form-group">
+                    <label for="editOrderStatus">Order Status *</label>
+                    <select id="editOrderStatus" required>
+                        <option value="pending">Pending</option>
+                        <option value="processing">Processing</option>
+                        <option value="completed">Completed</option>
+                        <option value="cancelled">Cancelled</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="editOrderNotes">Admin Notes</label>
+                    <textarea id="editOrderNotes" placeholder="Add any notes for this order..."></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%;">Update Order</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Check if admin is logged in
+        function checkAdminAuth() {
+            const isLoggedIn = localStorage.getItem('adminLoggedIn');
+            const loginTime = localStorage.getItem('adminLoginTime');
+            
+            if (!isLoggedIn || !loginTime) {
+                window.location.href = 'admin-login.html';
+                return false;
+            }
+            
+            // Check if session expired (24 hours)
+            const hoursSinceLogin = (new Date() - new Date(loginTime)) / (1000 * 60 * 60);
+            if (hoursSinceLogin > 24) {
+                localStorage.removeItem('adminLoggedIn');
+                localStorage.removeItem('adminLoginTime');
+                window.location.href = 'admin-login.html';
+                return false;
+            }
+            
+            return true;
+        }
+
+        // Toast Notification
+        function showToast(message, type = 'success') {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.style.background = type === 'success' ? '#4CAF50' : '#f44336';
+            toast.style.display = 'block';
+            
+            setTimeout(() => {
+                toast.style.display = 'none';
+            }, 3000);
+        }
+
+        // Tab Navigation
+        function showTab(tabName) {
+            // Hide all tabs
+            const tabs = document.querySelectorAll('.tab-content');
+            tabs.forEach(tab => tab.classList.remove('active'));
+            
+            // Remove active class from all sidebar links
+            const sidebarLinks = document.querySelectorAll('.sidebar a');
+            sidebarLinks.forEach(link => link.classList.remove('active'));
+            
+            // Show selected tab
+            document.getElementById(tabName + 'Tab').classList.add('active');
+            
+            // Add active class to clicked link
+            event.target.classList.add('active');
+            
+            // Load data for the tab
+            switch(tabName) {
+                case 'dashboard':
+                    loadDashboardStats();
+                    loadRecentOrders();
+                    break;
+                case 'products':
+                    loadProducts();
+                    break;
+                case 'orders':
+                    loadOrders();
+                    break;
+                case 'users':
+                    loadUsers();
+                    break;
+                case 'messages':
+                    loadMessages();
+                    break;
+                case 'settings':
+                    loadSettings();
+                    break;
+            }
+        }
+
+        // Modal Functions
+        function showAddProductModal() {
+            document.getElementById('addProductModal').style.display = 'flex';
+        }
+
+        function showOrderDetails(orderId) {
+            const orders = JSON.parse(localStorage.getItem('orders')) || [];
+            const order = orders.find(o => o.id === orderId);
+            
+            if (!order) {
+                showToast('Order not found!', 'error');
+                return;
+            }
+            
+            let itemsHTML = '';
+            if (order.items && order.items.length > 0) {
+                order.items.forEach(item => {
+                    itemsHTML += `
+                        <div class="order-item">
+                            <p><strong>${item.name}</strong></p>
+                            <p>Quantity: ${item.quantity}</p>
+                            <p>Price: ₹${item.price} each</p>
+                            <p>Subtotal: ₹${item.total}</p>
+                        </div>
+                    `;
+                });
+            }
+            
+            const orderDetailsHTML = `
+                <div class="order-details">
+                    <h3>Order Information</h3>
+                    <p><strong>Order ID:</strong> ${order.id}</p>
+                    <p><strong>Date:</strong> ${new Date(order.date).toLocaleString()}</p>
+                    <p><strong>Status:</strong> <span class="status-badge status-${order.status}">${order.status}</span></p>
+                    
+                    <h3 style="margin-top: 20px;">Customer Information</h3>
+                    <p><strong>Name:</strong> ${order.userName}</p>
+                    <p><strong>Email:</strong> ${order.userEmail}</p>
+                    <p><strong>Phone:</strong> ${order.userPhone}</p>
+                    <p><strong>Address:</strong> ${order.address}</p>
+                    <p><strong>Pincode:</strong> ${order.pincode}</p>
+                    
+                    <h3 style="margin-top: 20px;">Order Items</h3>
+                    ${itemsHTML}
+                    
+                    <h3 style="margin-top: 20px;">Payment Information</h3>
+                    <p><strong>Payment Method:</strong> ${order.paymentMethod === 'cod' ? 'Cash on Delivery' : 'Prepaid'}</p>
+                    <p><strong>Total Amount:</strong> ₹${order.total}</p>
+                    
+                    ${order.adminNotes ? `
+                        <h3 style="margin-top: 20px;">Admin Notes</h3>
+                        <p>${order.adminNotes}</p>
+                    ` : ''}
+                    
+                    <div style="margin-top: 20px;">
+                        <button onclick="showEditOrderModal('${order.id}')" class="btn btn-primary">
+                            <i class="fas fa-edit"></i> Update Status
+                        </button>
+                    </div>
+                </div>
+            `;
+            
+            document.getElementById('orderDetailsContent').innerHTML = orderDetailsHTML;
+            document.getElementById('orderDetailsModal').style.display = 'flex';
+        }
+
+        function showEditOrderModal(orderId) {
+            closeModal('orderDetailsModal');
+            document.getElementById('editOrderId').value = orderId;
+            const orders = JSON.parse(localStorage.getItem('orders')) || [];
+            const order = orders.find(o => o.id === orderId);
+            
+            if (order) {
+                document.getElementById('editOrderStatus').value = order.status || 'pending';
+                document.getElementById('editOrderNotes').value = order.adminNotes || '';
+            }
+            
+            document.getElementById('editOrderModal').style.display = 'flex';
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+            // Reset form if it's the add product modal
+            if (modalId === 'addProductModal') {
+                document.getElementById('addProductForm').reset();
+                document.getElementById('imagePreview').innerHTML = '';
+                document.getElementById('imageCount').textContent = 'No image selected';
+            }
+        }
+
+        // Image Preview - ONLY 1 IMAGE REQUIRED
+        function previewImages(event) {
+            const preview = document.getElementById('imagePreview');
+            const countElement = document.getElementById('imageCount');
+            preview.innerHTML = '';
+            
+            const files = event.target.files;
+            const imageCount = files.length;
+            
+            countElement.textContent = imageCount + ' image(s) selected';
+            
+            if (imageCount < 1) {
+                countElement.style.color = '#f44336';
+                showAlert('productAlert', 'Please select at least 1 image', 'error');
+            } else {
+                countElement.style.color = '#4CAF50';
+                document.getElementById('productAlert').style.display = 'none';
+            }
+            
+            for (let i = 0; i < files.length; i++) {
+                const file = files[i];
+                const reader = new FileReader();
+                
+                reader.onload = function(e) {
+                    const img = document.createElement('img');
+                    img.src = e.target.result;
+                    preview.appendChild(img);
+                }
+                
+                reader.readAsDataURL(file);
+            }
+        }
+
+        // Alert Function
+        function showAlert(elementId, message, type) {
+            const alertDiv = document.getElementById(elementId);
+            if (alertDiv) {
+                alertDiv.textContent = message;
+                alertDiv.className = `alert alert-${type}`;
+                alertDiv.style.display = 'block';
+                
+                setTimeout(() => {
+                    alertDiv.style.display = 'none';
+                }, 3000);
+            }
+        }
+
+        // Dashboard Stats
+        function loadDashboardStats() {
+            const products = JSON.parse(localStorage.getItem('products')) || [];
+            const orders = JSON.parse(localStorage.getItem('orders')) || [];
+            const users = JSON.parse(localStorage.getItem('users')) || [];
+            
+            document.getElementById('totalProducts').textContent = products.length;
+            document.getElementById('totalOrders').textContent = orders.length;
+            document.getElementById('totalUsers').textContent = users.length;
+            
+            // Calculate total revenue
+            const totalRevenue = orders.reduce((sum, order) => sum + (order.total || 0), 0);
+            document.getElementById('totalRevenue').textContent = '₹' + totalRevenue;
+        }
+
+        function loadRecentOrders() {
+            const orders = JSON.parse(localStorage.getItem('orders')) || [];
+            const recentOrders = orders.slice(-5).reverse(); // Get last 5 orders
+            const tbody = document.querySelector('#recentOrdersTable tbody');
+            tbody.innerHTML = '';
+            
+            recentOrders.forEach(order => {
+                if (!order) return;
+                
+                const row = `
+                    <tr>
+                        <td>${order.id || 'N/A'}</td>
+                        <td>${order.userName || 'N/A'}</td>
+                        <td>₹${order.total || '0'}</td>
+                        <td><span class="status-badge status-${order.status || 'pending'}">${order.status || 'pending'}</span></td>
+                        <td>${order.date ? new Date(order.date).toLocaleDateString() : 'N/A'}</td>
+                        <td>
+                            <button onclick="showOrderDetails('${order.id}')" class="btn btn-primary btn-sm">
+                                <i class="fas fa-eye"></i> View
+                            </button>
+                        </td>
+                    </tr>
+                `;
+                tbody.innerHTML += row;
+            });
+        }
+
+        // Products Management
+        function loadProducts() {
+            const products = JSON.parse(localStorage.getItem('products')) || [];
+            const tbody = document.getElementById('productsTable');
+            tbody.innerHTML = '';
+            
+            products.forEach(product => {
+                const row = `
+                    <tr>
+                        <td>
+                            ${product.images && product.images.length > 0 ? 
+                                `<img src="${product.images[0]}" style="width: 50px; height: 50px; object-fit: cover; border-radius: 5px;">` : 
+                                '<i class="fas fa-image" style="color: #ccc;"></i>'
+                            }
+                        </td>
+                        <td>${product.name || 'N/A'}</td>
+                        <td style="max-width: 300px;">${(product.description || '').substring(0, 100)}...</td>
+                        <td>₹${product.price || '0'}</td>
+                        <td>
+                            <div class="action-buttons">
+                                <button onclick="deleteProduct('${product.id}')" class="btn btn-danger btn-sm">
+                                    <i class="fas fa-trash"></i> Delete
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                `;
+                tbody.innerHTML += row;
+            });
+        }
+
+        document.getElementById('addProductForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('productName').value;
+            const description = document.getElementById('productDescription').value;
+            const price = parseFloat(document.getElementById('productPrice').value);
+            const imageFiles = document.getElementById('productImages').files;
+            
+            if (imageFiles.length < 1) {
+                showAlert('productAlert', 'Please upload at least 1 image', 'error');
+                return;
+            }
+            
+            // Convert images to base64
+            const images = [];
+            const promises = [];
+            
+            for (let i = 0; i < imageFiles.length; i++) {
+                const promise = new Promise((resolve) => {
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        images.push(e.target.result);
+                        resolve();
+                    };
+                    reader.readAsDataURL(imageFiles[i]);
+                });
+                promises.push(promise);
+            }
+            
+            Promise.all(promises).then(() => {
+                const products = JSON.parse(localStorage.getItem('products')) || [];
+                const newProduct = {
+                    id: Date.now().toString(),
+                    name,
+                    description,
+                    price,
+                    images,
+                    createdAt: new Date().toISOString()
+                };
+                
+                products.push(newProduct);
+                localStorage.setItem('products', JSON.stringify(products));
+                
+                closeModal('addProductModal');
+                showToast('Product added successfully!', 'success');
+                loadProducts();
+                loadDashboardStats();
+                
+                // Reset form
+                document.getElementById('addProductForm').reset();
+                document.getElementById('imagePreview').innerHTML = '';
+                document.getElementById('imageCount').textContent = 'No image selected';
+            });
+        });
+
+        function deleteProduct(productId) {
+            if (confirm('Are you sure you want to delete this product?')) {
+                let products = JSON.parse(localStorage.getItem('products')) || [];
+                products = products.filter(p => p.id !== productId);
+                localStorage.setItem('products', JSON.stringify(products));
+                loadProducts();
+                loadDashboardStats();
+                showToast('Product deleted successfully!', 'success');
+            }
+        }
+
+        // Orders Management
+        function loadOrders() {
+            const orders = JSON.parse(localStorage.getItem('orders')) || [];
+            const tbody = document.getElementById('ordersTable');
+            tbody.innerHTML = '';
+            
+            orders.reverse().forEach(order => {
+                if (!order) return;
+                
+                const row = `
+                    <tr>
+                        <td>${order.id || 'N/A'}</td>
+                        <td>${order.userName || 'N/A'}</td>
+                        <td>${order.userPhone || 'N/A'}</td>
+                        <td title="${order.address || ''}">${(order.address || '').substring(0, 30)}...</td>
+                        <td>₹${order.total || '0'}</td>
+                        <td>${order.paymentMethod === 'cod' ? 'COD' : 'Prepaid'}</td>
+                        <td><span class="status-badge status-${order.status || 'pending'}">${order.status || 'pending'}</span></td>
+                        <td>
+                            <button onclick="showOrderDetails('${order.id}')" class="btn btn-primary btn-sm">
+                                <i class="fas fa-eye"></i> Details
+                            </button>
+                        </td>
+                    </tr>
+                `;
+                tbody.innerHTML += row;
+            });
+        }
+
+        document.getElementById('editOrderForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const orderId = document.getElementById('editOrderId').value;
+            const status = document.getElementById('editOrderStatus').value;
+            const notes = document.getElementById('editOrderNotes').value;
+            
+            let orders = JSON.parse(localStorage.getItem('orders')) || [];
+            const orderIndex = orders.findIndex(o => o.id === orderId);
+            
+            if (orderIndex !== -1) {
+                orders[orderIndex].status = status;
+                orders[orderIndex].adminNotes = notes;
+                orders[orderIndex].updatedAt = new Date().toISOString();
+                
+                localStorage.setItem('orders', JSON.stringify(orders));
+                
+                closeModal('editOrderModal');
+                showToast('Order updated successfully!', 'success');
+                loadOrders();
+                loadRecentOrders();
+                loadDashboardStats();
+                
+                // Show order details again
+                setTimeout(() => {
+                    showOrderDetails(orderId);
+                }, 500);
+            }
+        });
+
+        // Users Management
+        function loadUsers() {
+            const users = JSON.parse(localStorage.getItem('users')) || [];
+            const orders = JSON.parse(localStorage.getItem('orders')) || [];
+            const tbody = document.getElementById('usersTable');
+            tbody.innerHTML = '';
+            
+            users.forEach(user => {
+                if (!user) return;
+                
+                const userOrders = orders.filter(o => o.userEmail === user.email);
+                const row = `
+                    <tr>
+                        <td>${user.name || 'N/A'}</td>
+                        <td>${user.email || 'N/A'}</td>
+                        <td>${user.phone || 'N/A'}</td>
+                        <td title="${user.address || ''}">${(user.address || '').substring(0, 30)}...</td>
+                        <td>${user.pincode || 'N/A'}</td>
+                        <td>${userOrders.length}</td>
+                    </tr>
+                `;
+                tbody.innerHTML += row;
+            });
+        }
+
+        // Messages Management
+        function loadMessages() {
+            const messages = JSON.parse(localStorage.getItem('contactMessages')) || [];
+            const tbody = document.getElementById('messagesTable');
+            tbody.innerHTML = '';
+            
+            messages.reverse().forEach(msg => {
+                if (!msg) return;
+                
+                const row = `
+                    <tr>
+                        <td>${msg.name || 'N/A'}</td>
+                        <td>${msg.email || 'N/A'}</td>
+                        <td title="${msg.message || ''}">${(msg.message || '').substring(0, 50)}...</td>
+                        <td>${msg.date ? new Date(msg.date).toLocaleDateString() : 'N/A'}</td>
+                        <td>${msg.read ? '<span style="color:green">Read</span>' : '<span style="color:orange">Unread</span>'}</td>
+                    </tr>
+                `;
+                tbody.innerHTML += row;
+            });
+        }
+
+        // Settings
+        function loadSettings() {
+            const settings = JSON.parse(localStorage.getItem('storeSettings')) || {};
+            
+            if (settings.storeName) document.getElementById('storeName').value = settings.storeName;
+            if (settings.storeEmail) document.getElementById('storeEmail').value = settings.storeEmail;
+            if (settings.storePhone) document.getElementById('storePhone').value = settings.storePhone;
+            if (settings.storeAddress) document.getElementById('storeAddress').value = settings.storeAddress;
+        }
+
+        function saveSettings() {
+            const settings = {
+                storeName: document.getElementById('storeName').value,
+                storeEmail: document.getElementById('storeEmail').value,
+                storePhone: document.getElementById('storePhone').value,
+                storeAddress: document.getElementById('storeAddress').value
+            };
+            
+            localStorage.setItem('storeSettings', JSON.stringify(settings));
+            showToast('Settings saved successfully!', 'success');
+        }
+
+        // Logout
+        function logoutAdmin() {
+            localStorage.removeItem('adminLoggedIn');
+            localStorage.removeItem('adminLoginTime');
+            window.location.href = 'admin-login.html';
+        }
+
+        // Initialize Admin Dashboard
+        window.addEventListener('DOMContentLoaded', function() {
+            if (!checkAdminAuth()) return;
+            
+            // Load initial data
+            loadDashboardStats();
+            loadRecentOrders();
+            loadSettings();
+            
+            // Auto logout after inactivity
+            let inactivityTimer;
+            function resetTimer() {
+                clearTimeout(inactivityTimer);
+                inactivityTimer = setTimeout(logoutAdmin, 30 * 60 * 1000); // 30 minutes
+            }
+            
+            // Reset timer on user activity
+            document.addEventListener('mousemove', resetTimer);
+            document.addEventListener('keypress', resetTimer);
+            resetTimer();
+        });
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            if (event.target.classList.contains('modal')) {
+                event.target.style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>
