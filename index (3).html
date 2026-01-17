@@ -1,0 +1,1401 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3757835197540945"
+     crossorigin="anonymous"></script>
+
+    <meta name="google-adsense-account" content="ca-pub-3757835197540945">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lukeshwar Store - Premium Shopping</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+        }
+
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo i {
+            margin-right: 10px;
+            color: #ffd700;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .nav-links a:hover {
+            color: #ffd700;
+        }
+
+        .user-actions {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .btn {
+            padding: 8px 20px;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background-color: #ff6b6b;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: #ff5252;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-secondary:hover {
+            background-color: white;
+            color: #667eea;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 5rem 0;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Products Section */
+        .section-title {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: #333;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(to right, #667eea, #764ba2);
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+
+        .product-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .product-info {
+            padding: 1.5rem;
+        }
+
+        .product-title {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+
+        .product-description {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            line-height: 1.4;
+        }
+
+        .product-price {
+            color: #ff6b6b;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .product-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn-sm {
+            padding: 8px 15px;
+            font-size: 0.9rem;
+        }
+
+        /* Footer */
+        footer {
+            background: #2c3e50;
+            color: white;
+            padding: 3rem 0 1rem;
+            margin-top: 3rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: #ffd700;
+        }
+
+        .footer-section p {
+            line-height: 1.6;
+            color: #ecf0f1;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section ul li a {
+            color: #ecf0f1;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-section ul li a:hover {
+            color: #ffd700;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-icons a {
+            color: white;
+            font-size: 1.2rem;
+            transition: color 0.3s;
+        }
+
+        .social-icons a:hover {
+            color: #ffd700;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 1rem;
+            border-top: 1px solid #34495e;
+            color: #bdc3c7;
+            font-size: 0.9rem;
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 1001;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            max-width: 500px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .close-btn {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #666;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        /* Cart Badge */
+        .cart-badge {
+            position: relative;
+            display: inline-block;
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: #ff6b6b;
+            color: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            font-size: 0.8rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Toast Notification */
+        .toast {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #4CAF50;
+            color: white;
+            padding: 1rem;
+            border-radius: 5px;
+            z-index: 10000;
+            animation: slideIn 0.3s ease;
+            display: none;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        /* Alert Messages */
+        .alert {
+            padding: 1rem;
+            border-radius: 5px;
+            margin-bottom: 1rem;
+            display: none;
+        }
+
+        .alert-success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .alert-error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="toast" class="toast"></div>
+
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">
+                    <i class="fas fa-shopping-bag"></i>
+                    Lukeshwar Store
+                </div>
+                <ul class="nav-links">
+                    <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="#products"><i class="fas fa-box"></i> Products</a></li>
+                    <li><a href="#about"><i class="fas fa-info-circle"></i> About Us</a></li>
+                    <li><a href="#contact"><i class="fas fa-envelope"></i> Contact</a></li>
+                    <li><a href="#" onclick="showUserOrders()"><i class="fas fa-shopping-cart"></i> My Orders</a></li>
+                </ul>
+                <div class="user-actions" id="userActions">
+                    <a href="#" class="btn btn-secondary" onclick="showLoginModal()">
+                        <i class="fas fa-sign-in-alt"></i> Login
+                    </a>
+                    <a href="#" class="btn btn-primary" onclick="showRegisterModal()">
+                        <i class="fas fa-user-plus"></i> Register
+                    </a>
+                    <a href="admin-login.html" class="btn btn-secondary">
+                        <i class="fas fa-lock"></i> Admin
+                    </a>
+                    <div class="cart-badge">
+                        <a href="#" onclick="showCart()">
+                            <i class="fas fa-shopping-cart"></i>
+                        </a>
+                        <span class="cart-count" id="cartCount">0</span>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>Welcome to Lukeshwar Premium Store</h1>
+            <p>Discover amazing products at unbeatable prices. Shop with confidence and experience the best online shopping platform.</p>
+            <a href="#products" class="btn btn-primary" style="font-size: 1.2rem; padding: 12px 30px;">
+                <i class="fas fa-shopping-bag"></i> Shop Now
+            </a>
+        </div>
+    </section>
+
+    <section id="products" class="container">
+        <h2 class="section-title">Featured Products</h2>
+        <div class="products-grid" id="productsContainer">
+            </div>
+    </section>
+
+    <section id="about" style="background: white; padding: 4rem 0;">
+        <div class="container">
+            <h2 class="section-title">About Us</h2>
+            <div style="max-width: 800px; margin: 0 auto; text-align: center;">
+                <p style="font-size: 1.1rem; line-height: 1.8; margin-bottom: 2rem;">
+                    Welcome to Lukeshwar Store, your number one source for all premium products. We're dedicated to providing you the very best of quality products, with an emphasis on reliability, customer service, and uniqueness.
+                </p>
+                <p style="font-size: 1.1rem; line-height: 1.8; margin-bottom: 2rem;">
+                    Founded in 2024, Lukeshwar Store has come a long way from its beginnings. When we first started out, our passion for providing the best shopping experience drove us to start our own business.
+                </p>
+                <p style="font-size: 1.1rem; line-height: 1.8;">
+                    We hope you enjoy our products as much as we enjoy offering them to you. If you have any questions or comments, please don't hesitate to contact us.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Lukeshwar Store</h3>
+                    <p>Your trusted online shopping destination for premium products. Quality guaranteed with every purchase.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="#products">Products</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#" onclick="showContactModal()">Contact</a></li>
+                        <li><a href="#" onclick="showPrivacyModal()">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact Info</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> 123 Shopping Street, City, Country</p>
+                    <p><i class="fas fa-phone"></i> +91 1234567890</p>
+                    <p><i class="fas fa-envelope"></i> info@lukeshwarstore.com</p>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2024 Lukeshwar Store. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Login</h2>
+                <button class="close-btn" onclick="closeModal('loginModal')">&times;</button>
+            </div>
+            <div class="alert" id="loginAlert"></div>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="loginEmail">Email</label>
+                    <input type="email" id="loginEmail" required>
+                </div>
+                <div class="form-group">
+                    <label for="loginPassword">Password</label>
+                    <input type="password" id="loginPassword" required>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%;">Login</button>
+            </form>
+            <p style="text-align: center; margin-top: 1rem;">
+                Don't have an account? <a href="#" onclick="showRegisterModal()" style="color: #667eea;">Register here</a>
+            </p>
+        </div>
+    </div>
+
+    <div id="registerModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Register</h2>
+                <button class="close-btn" onclick="closeModal('registerModal')">&times;</button>
+            </div>
+            <div class="alert" id="registerAlert"></div>
+            <form id="registerForm">
+                <div class="form-group">
+                    <label for="regName">Full Name</label>
+                    <input type="text" id="regName" required>
+                </div>
+                <div class="form-group">
+                    <label for="regEmail">Email</label>
+                    <input type="email" id="regEmail" required>
+                </div>
+                <div class="form-group">
+                    <label for="regPhone">Phone Number</label>
+                    <input type="tel" id="regPhone" required>
+                </div>
+                <div class="form-group">
+                    <label for="regAddress">Address</label>
+                    <textarea id="regAddress" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="regPincode">Pincode</label>
+                    <input type="text" id="regPincode" required>
+                </div>
+                <div class="form-group">
+                    <label for="regPassword">Password</label>
+                    <input type="password" id="regPassword" required>
+                </div>
+                <div class="form-group">
+                    <label for="regConfirmPassword">Confirm Password</label>
+                    <input type="password" id="regConfirmPassword" required>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%;">Register</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="orderModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Place Order</h2>
+                <button class="close-btn" onclick="closeModal('orderModal')">&times;</button>
+            </div>
+            <div class="alert" id="orderAlert"></div>
+            <form id="orderForm">
+                <input type="hidden" id="orderProductId">
+                <div class="form-group">
+                    <label for="orderName">Full Name *</label>
+                    <input type="text" id="orderName" required>
+                </div>
+                <div class="form-group">
+                    <label for="orderPhone">Phone Number *</label>
+                    <input type="tel" id="orderPhone" required>
+                </div>
+                <div class="form-group">
+                    <label for="orderAddress">Full Address * (House No., Street, City, State)</label>
+                    <textarea id="orderAddress" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="orderPincode">Pin Code *</label>
+                    <input type="text" id="orderPincode" required>
+                </div>
+                <div class="form-group">
+                    <label for="orderPayment">Payment Method *</label>
+                    <select id="orderPayment" required>
+                        <option value="">Select Payment</option>
+                        <option value="cod">Cash on Delivery (COD)</option>
+                        <option value="paid">Prepaid</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="orderQuantity">Quantity *</label>
+                    <input type="number" id="orderQuantity" value="1" min="1" required>
+                </div>
+                <div id="orderSummary"></div>
+                <button type="submit" class="btn btn-primary" style="width: 100%;">Place Order Now</button>
+                <p style="margin-top: 10px; font-size: 0.9rem; color: #666;">
+                    * Required fields must be filled
+                </p>
+            </form>
+        </div>
+    </div>
+
+    <div id="cartModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Your Cart</h2>
+                <button class="close-btn" onclick="closeModal('cartModal')">&times;</button>
+            </div>
+            <div id="cartItems">
+                </div>
+            <div style="text-align: right; margin-top: 1rem;">
+                <h3>Total: ₹<span id="cartTotal">0</span></h3>
+                <button onclick="showCheckoutFromCart()" class="btn btn-primary">Checkout & Place Order</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="ordersModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>My Orders</h2>
+                <button class="close-btn" onclick="closeModal('ordersModal')">&times;</button>
+            </div>
+            <div id="userOrdersList">
+                </div>
+        </div>
+    </div>
+
+    <div id="contactModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Contact Us</h2>
+                <button class="close-btn" onclick="closeModal('contactModal')">&times;</button>
+            </div>
+            <div class="alert" id="contactAlert"></div>
+            <form id="contactForm">
+                <div class="form-group">
+                    <label for="contactName">Your Name *</label>
+                    <input type="text" id="contactName" required>
+                </div>
+                <div class="form-group">
+                    <label for="contactEmail">Your Email *</label>
+                    <input type="email" id="contactEmail" required>
+                </div>
+                <div class="form-group">
+                    <label for="contactMessage">Message *</label>
+                    <textarea id="contactMessage" rows="5" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%;">Send Message</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="privacyModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Privacy Policy</h2>
+                <button class="close-btn" onclick="closeModal('privacyModal')">&times;</button>
+            </div>
+            <div style="max-height: 400px; overflow-y: auto;">
+                <h3>Privacy Policy for Lukeshwar Store</h3>
+                <p><strong>Last Updated:</strong> January 1, 2024</p>
+                
+                <h4>1. Information We Collect</h4>
+                <p>We collect personal information that you provide to us when you register, place an order, or contact us. This includes:</p>
+                <ul>
+                    <li>Name and contact details</li>
+                    <li>Shipping address</li>
+                    <li>Phone number</li>
+                    <li>Email address</li>
+                    <li>Payment information</li>
+                </ul>
+                
+                <h4>2. How We Use Your Information</h4>
+                <p>We use your information to:</p>
+                <ul>
+                    <li>Process and deliver your orders</li>
+                    <li>Communicate with you about your orders</li>
+                    <li>Provide customer support</li>
+                    <li>Improve our services</li>
+                </ul>
+                
+                <h4>3. Data Security</h4>
+                <p>We implement security measures to protect your personal information. However, no method of transmission over the internet is 100% secure.</p>
+                
+                <h4>4. Contact Us</h4>
+                <p>If you have any questions about this Privacy Policy, please contact us at:</p>
+                <p>Email: info@lukeshwarstore.com</p>
+                <p>Phone: +91 1234567890</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Initialize Local Storage
+        function initStorage() {
+            if (!localStorage.getItem('products')) {
+                // Sample products
+                const sampleProducts = [
+                    {
+                        id: '1',
+                        name: 'Premium Wireless Headphones',
+                        description: 'Noise cancelling wireless headphones with 30 hours battery life',
+                        price: 2999,
+                        images: ['https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400&h=300&fit=crop']
+                    },
+                    {
+                        id: '2',
+                        name: 'Smart Watch Pro',
+                        description: 'Fitness tracker with heart rate monitor and GPS',
+                        price: 4999,
+                        images: ['https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400&h=300&fit=crop']
+                    },
+                    {
+                        id: '3',
+                        name: 'Bluetooth Speaker',
+                        description: 'Portable speaker with 360° sound and waterproof design',
+                        price: 1999,
+                        images: ['https://images.unsplash.com/photo-1546435770-a3e426bf472b?w=400&h=300&fit=crop']
+                    }
+                ];
+                localStorage.setItem('products', JSON.stringify(sampleProducts));
+            }
+            
+            if (!localStorage.getItem('users')) {
+                localStorage.setItem('users', JSON.stringify([]));
+            }
+            
+            if (!localStorage.getItem('orders')) {
+                localStorage.setItem('orders', JSON.stringify([]));
+            }
+            
+            if (!localStorage.getItem('cart')) {
+                localStorage.setItem('cart', JSON.stringify([]));
+            }
+            
+            if (!localStorage.getItem('contactMessages')) {
+                localStorage.setItem('contactMessages', JSON.stringify([]));
+            }
+        }
+
+        // Toast Notification
+        function showToast(message, type = 'success') {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.style.background = type === 'success' ? '#4CAF50' : '#f44336';
+            toast.style.display = 'block';
+            
+            setTimeout(() => {
+                toast.style.display = 'none';
+            }, 3000);
+        }
+
+        // Modal Functions
+        function showLoginModal() {
+            closeAllModals();
+            document.getElementById('loginModal').style.display = 'flex';
+        }
+
+        function showRegisterModal() {
+            closeAllModals();
+            document.getElementById('registerModal').style.display = 'flex';
+        }
+
+        function showOrderModal(productId) {
+            closeAllModals();
+            
+            // Check if user is logged in
+            const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+            if (!currentUser) {
+                showLoginModal();
+                return;
+            }
+            
+            document.getElementById('orderProductId').value = productId;
+            const product = getProductById(productId);
+            
+            // Auto-fill user details
+            if (currentUser) {
+                document.getElementById('orderName').value = currentUser.name || '';
+                document.getElementById('orderPhone').value = currentUser.phone || '';
+                document.getElementById('orderAddress').value = currentUser.address || '';
+                document.getElementById('orderPincode').value = currentUser.pincode || '';
+            }
+            
+            // Update order summary
+            document.getElementById('orderSummary').innerHTML = `
+                <div style="background: #f8f9fa; padding: 1rem; border-radius: 5px; margin-bottom: 1rem;">
+                    <h4>Order Summary</h4>
+                    <p><strong>Product:</strong> ${product.name}</p>
+                    <p><strong>Price:</strong> ₹${product.price}</p>
+                    <p><strong>Quantity:</strong> <span id="summaryQuantity">1</span></p>
+                    <p><strong>Total:</strong> ₹<span id="summaryTotal">${product.price}</span></p>
+                </div>
+            `;
+            
+            // Update summary on quantity change
+            document.getElementById('orderQuantity').addEventListener('input', function(e) {
+                const quantity = parseInt(e.target.value) || 1;
+                const total = product.price * quantity;
+                document.getElementById('summaryQuantity').textContent = quantity;
+                document.getElementById('summaryTotal').textContent = total;
+            });
+            
+            document.getElementById('orderModal').style.display = 'flex';
+        }
+
+        function showCart() {
+            closeAllModals();
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            let cartHTML = '';
+            let total = 0;
+            
+            if (cart.length === 0) {
+                cartHTML = '<p>Your cart is empty</p>';
+            } else {
+                cart.forEach(item => {
+                    const product = getProductById(item.productId);
+                    if (product) {
+                        const itemTotal = product.price * item.quantity;
+                        total += itemTotal;
+                        cartHTML += `
+                            <div style="display: flex; justify-content: space-between; align-items: center; padding: 1rem; border-bottom: 1px solid #ddd;">
+                                <div>
+                                    <h4>${product.name}</h4>
+                                    <p>Quantity: 
+                                        <button onclick="updateCartQuantity('${item.productId}', ${item.quantity - 1})" style="padding: 2px 8px; margin: 0 5px;">-</button>
+                                        ${item.quantity}
+                                        <button onclick="updateCartQuantity('${item.productId}', ${item.quantity + 1})" style="padding: 2px 8px; margin: 0 5px;">+</button>
+                                    </p>
+                                    <p>Price: ₹${product.price}</p>
+                                    <p>Subtotal: ₹${itemTotal}</p>
+                                </div>
+                                <button onclick="removeFromCart('${item.productId}')" class="btn btn-secondary">Remove</button>
+                            </div>
+                        `;
+                    }
+                });
+            }
+            
+            document.getElementById('cartItems').innerHTML = cartHTML;
+            document.getElementById('cartTotal').textContent = total;
+            document.getElementById('cartModal').style.display = 'flex';
+        }
+
+        function showCheckoutFromCart() {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            if (cart.length === 0) {
+                showToast('Your cart is empty!', 'error');
+                return;
+            }
+            
+            // Check if user is logged in
+            const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+            if (!currentUser) {
+                closeModal('cartModal');
+                showLoginModal();
+                return;
+            }
+            
+            // Show order form for cart checkout
+            closeModal('cartModal');
+            showCartOrderForm();
+        }
+
+        function showCartOrderForm() {
+            closeAllModals();
+            
+            const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            
+            // Calculate cart total
+            let cartTotal = 0;
+            let itemsHTML = '';
+            cart.forEach(item => {
+                const product = getProductById(item.productId);
+                if (product) {
+                    const itemTotal = product.price * item.quantity;
+                    cartTotal += itemTotal;
+                    itemsHTML += `
+                        <div style="margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid #eee;">
+                            <p><strong>${product.name}</strong> × ${item.quantity} = ₹${itemTotal}</p>
+                        </div>
+                    `;
+                }
+            });
+            
+            // Create order form for cart
+            document.getElementById('orderSummary').innerHTML = `
+                <div style="background: #f8f9fa; padding: 1rem; border-radius: 5px; margin-bottom: 1rem;">
+                    <h4>Order Summary (${cart.length} item${cart.length > 1 ? 's' : ''})</h4>
+                    ${itemsHTML}
+                    <h5>Total Amount: ₹${cartTotal}</h5>
+                </div>
+            `;
+            
+            // Auto-fill user details
+            if (currentUser) {
+                document.getElementById('orderName').value = currentUser.name || '';
+                document.getElementById('orderPhone').value = currentUser.phone || '';
+                document.getElementById('orderAddress').value = currentUser.address || '';
+                document.getElementById('orderPincode').value = currentUser.pincode || '';
+            }
+            
+            document.getElementById('orderProductId').value = 'cart';
+            document.getElementById('orderModal').style.display = 'flex';
+        }
+
+        function showUserOrders() {
+            closeAllModals();
+            const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+            if (!currentUser) {
+                showLoginModal();
+                return;
+            }
+            
+            const orders = JSON.parse(localStorage.getItem('orders')) || [];
+            const userOrders = orders.filter(order => order.userEmail === currentUser.email);
+            
+            let ordersHTML = '';
+            if (userOrders.length === 0) {
+                ordersHTML = '<p>No orders found. Start shopping now!</p>';
+            } else {
+                userOrders.forEach(order => {
+                    let itemsHTML = '';
+                    if (order.items && order.items.length > 0) {
+                        order.items.forEach(item => {
+                            itemsHTML += `
+                                <div style="border-left: 3px solid #667eea; padding-left: 10px; margin-bottom: 10px;">
+                                    <p><strong>${item.name}</strong></p>
+                                    <p>Quantity: ${item.quantity} × ₹${item.price} = ₹${item.total}</p>
+                                </div>
+                            `;
+                        });
+                    }
+                    
+                    ordersHTML += `
+                        <div style="border: 1px solid #ddd; border-radius: 5px; padding: 1rem; margin-bottom: 1rem;">
+                            <h4>Order ID: ${order.id}</h4>
+                            <p><strong>Date:</strong> ${new Date(order.date).toLocaleDateString()}</p>
+                            <p><strong>Status:</strong> <span style="color: ${order.status === 'completed' ? 'green' : order.status === 'processing' ? 'orange' : 'red'}">${order.status}</span></p>
+                            <div style="margin: 10px 0;">
+                                <h5>Items:</h5>
+                                ${itemsHTML}
+                            </div>
+                            <p><strong>Total Amount:</strong> ₹${order.total}</p>
+                            <p><strong>Payment Method:</strong> ${order.paymentMethod === 'cod' ? 'Cash on Delivery' : 'Prepaid'}</p>
+                            <p><strong>Delivery Address:</strong> ${order.address}, ${order.pincode}</p>
+                            <p><strong>Phone:</strong> ${order.userPhone}</p>
+                        </div>
+                    `;
+                });
+            }
+            
+            document.getElementById('userOrdersList').innerHTML = ordersHTML;
+            document.getElementById('ordersModal').style.display = 'flex';
+        }
+
+        function showContactModal() {
+            closeAllModals();
+            document.getElementById('contactModal').style.display = 'flex';
+        }
+
+        function showPrivacyModal() {
+            closeAllModals();
+            document.getElementById('privacyModal').style.display = 'flex';
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+        }
+
+        function closeAllModals() {
+            const modals = document.querySelectorAll('.modal');
+            modals.forEach(modal => {
+                modal.style.display = 'none';
+            });
+        }
+
+        // Product Functions
+        function getProductById(id) {
+            const products = JSON.parse(localStorage.getItem('products')) || [];
+            return products.find(p => p.id === id);
+        }
+
+        function loadProducts() {
+            const products = JSON.parse(localStorage.getItem('products')) || [];
+            const container = document.getElementById('productsContainer');
+            container.innerHTML = '';
+            
+            products.forEach(product => {
+                const productCard = `
+                    <div class="product-card">
+                        <img src="${product.images[0]}" alt="${product.name}" class="product-img">
+                        <div class="product-info">
+                            <h3 class="product-title">${product.name}</h3>
+                            <p class="product-description">${product.description}</p>
+                            <p class="product-price">₹${product.price}</p>
+                            <div class="product-actions">
+                                <button onclick="addToCart('${product.id}')" class="btn btn-primary btn-sm">
+                                    <i class="fas fa-cart-plus"></i> Add to Cart
+                                </button>
+                                <button onclick="showOrderModal('${product.id}')" class="btn btn-secondary btn-sm">
+                                    <i class="fas fa-bolt"></i> Buy Now
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                container.innerHTML += productCard;
+            });
+        }
+
+        // Cart Functions
+        function addToCart(productId) {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const existingItem = cart.find(item => item.productId === productId);
+            
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({ productId, quantity: 1 });
+            }
+            
+            localStorage.setItem('cart', JSON.stringify(cart));
+            updateCartCount();
+            
+            // Show success message
+            showToast('Product added to cart!', 'success');
+        }
+
+        function updateCartQuantity(productId, newQuantity) {
+            if (newQuantity < 1) {
+                removeFromCart(productId);
+                return;
+            }
+            
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const itemIndex = cart.findIndex(item => item.productId === productId);
+            
+            if (itemIndex !== -1) {
+                cart[itemIndex].quantity = newQuantity;
+                localStorage.setItem('cart', JSON.stringify(cart));
+                updateCartCount();
+                showCart();
+            }
+        }
+
+        function removeFromCart(productId) {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            cart = cart.filter(item => item.productId !== productId);
+            localStorage.setItem('cart', JSON.stringify(cart));
+            updateCartCount();
+            showCart();
+        }
+
+        function updateCartCount() {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+            const cartCountElement = document.getElementById('cartCount');
+            if (cartCountElement) {
+                cartCountElement.textContent = totalItems;
+            }
+        }
+
+        // Form Handlers
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = document.getElementById('loginEmail').value;
+            const password = document.getElementById('loginPassword').value;
+            
+            const users = JSON.parse(localStorage.getItem('users')) || [];
+            const user = users.find(u => u.email === email && u.password === password);
+            
+            if (user) {
+                localStorage.setItem('currentUser', JSON.stringify(user));
+                closeModal('loginModal');
+                showToast('Login successful!', 'success');
+                setTimeout(() => {
+                    window.location.reload();
+                }, 1000);
+            } else {
+                showAlert('loginAlert', 'Invalid email or password!', 'error');
+            }
+        });
+
+        document.getElementById('registerForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const name = document.getElementById('regName').value;
+            const email = document.getElementById('regEmail').value;
+            const phone = document.getElementById('regPhone').value;
+            const address = document.getElementById('regAddress').value;
+            const pincode = document.getElementById('regPincode').value;
+            const password = document.getElementById('regPassword').value;
+            const confirmPassword = document.getElementById('regConfirmPassword').value;
+            
+            if (password !== confirmPassword) {
+                showAlert('registerAlert', 'Passwords do not match!', 'error');
+                return;
+            }
+            
+            const users = JSON.parse(localStorage.getItem('users')) || [];
+            
+            // Check if user already exists
+            if (users.find(u => u.email === email)) {
+                showAlert('registerAlert', 'User already exists!', 'error');
+                return;
+            }
+            
+            const newUser = {
+                id: Date.now().toString(),
+                name,
+                email,
+                phone,
+                address,
+                pincode,
+                password
+            };
+            
+            users.push(newUser);
+            localStorage.setItem('users', JSON.stringify(users));
+            localStorage.setItem('currentUser', JSON.stringify(newUser));
+            
+            closeModal('registerModal');
+            showToast('Registration successful!', 'success');
+            setTimeout(() => {
+                window.location.reload();
+            }, 1000);
+        });
+
+        document.getElementById('orderForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+            
+            if (!currentUser) {
+                closeModal('orderModal');
+                showLoginModal();
+                return;
+            }
+            
+            const productId = document.getElementById('orderProductId').value;
+            const product = getProductById(productId);
+            const quantity = parseInt(document.getElementById('orderQuantity').value) || 1;
+            
+            // Get form values
+            const name = document.getElementById('orderName').value;
+            const phone = document.getElementById('orderPhone').value;
+            const address = document.getElementById('orderAddress').value;
+            const pincode = document.getElementById('orderPincode').value;
+            const paymentMethod = document.getElementById('orderPayment').value;
+            
+            // Validate required fields
+            if (!name || !phone || !address || !pincode || !paymentMethod) {
+                showAlert('orderAlert', 'Please fill all required fields!', 'error');
+                return;
+            }
+            
+            let order;
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            
+            if (productId === 'cart') {
+                // Order from cart
+                const orderItems = [];
+                let orderTotal = 0;
+                
+                cart.forEach(item => {
+                    const cartProduct = getProductById(item.productId);
+                    if (cartProduct) {
+                        const itemTotal = cartProduct.price * item.quantity;
+                        orderTotal += itemTotal;
+                        orderItems.push({
+                            productId: item.productId,
+                            name: cartProduct.name,
+                            quantity: item.quantity,
+                            price: cartProduct.price,
+                            total: itemTotal
+                        });
+                    }
+                });
+                
+                order = {
+                    id: 'ORD' + Date.now(),
+                    userId: currentUser.id,
+                    userName: name,
+                    userEmail: currentUser.email,
+                    userPhone: phone,
+                    items: orderItems,
+                    total: orderTotal,
+                    address: address,
+                    pincode: pincode,
+                    paymentMethod: paymentMethod,
+                    status: 'pending',
+                    date: new Date().toISOString()
+                };
+                
+                // Clear cart after order
+                localStorage.setItem('cart', JSON.stringify([]));
+                updateCartCount();
+            } else {
+                // Single product order
+                order = {
+                    id: 'ORD' + Date.now(),
+                    userId: currentUser.id,
+                    userName: name,
+                    userEmail: currentUser.email,
+                    userPhone: phone,
+                    items: [{
+                        productId: productId,
+                        name: product.name,
+                        quantity: quantity,
+                        price: product.price,
+                        total: product.price * quantity
+                    }],
+                    total: product.price * quantity,
+                    address: address,
+                    pincode: pincode,
+                    paymentMethod: paymentMethod,
+                    status: 'pending',
+                    date: new Date().toISOString()
+                };
+            }
+            
+            // Save order
+            const orders = JSON.parse(localStorage.getItem('orders')) || [];
+            orders.push(order);
+            localStorage.setItem('orders', JSON.stringify(orders));
+            
+            // Update user details if changed
+            if (address && pincode) {
+                currentUser.address = address;
+                currentUser.pincode = pincode;
+                localStorage.setItem('currentUser', JSON.stringify(currentUser));
+                
+                // Update in users list
+                let users = JSON.parse(localStorage.getItem('users')) || [];
+                const userIndex = users.findIndex(u => u.id === currentUser.id);
+                if (userIndex !== -1) {
+                    users[userIndex].address = address;
+                    users[userIndex].pincode = pincode;
+                    localStorage.setItem('users', JSON.stringify(users));
+                }
+            }
+            
+            closeModal('orderModal');
+            showToast(`Order placed successfully! Order ID: ${order.id}`, 'success');
+            
+            // Redirect to orders page after delay
+            setTimeout(() => {
+                showUserOrders();
+            }, 1500);
+        });
+
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const name = document.getElementById('contactName').value;
+            const email = document.getElementById('contactEmail').value;
+            const message = document.getElementById('contactMessage').value;
+            
+            // Save contact message to localStorage
+            const contactMessages = JSON.parse(localStorage.getItem('contactMessages')) || [];
+            contactMessages.push({
+                id: Date.now().toString(),
+                name,
+                email,
+                message,
+                date: new Date().toISOString(),
+                read: false
+            });
+            localStorage.setItem('contactMessages', JSON.stringify(contactMessages));
+            
+            closeModal('contactModal');
+            showToast('Thank you for your message! We will contact you soon.', 'success');
+        });
+
+        // Alert Function
+        function showAlert(elementId, message, type) {
+            const alertDiv = document.getElementById(elementId);
+            if (alertDiv) {
+                alertDiv.textContent = message;
+                alertDiv.className = `alert alert-${type}`;
+                alertDiv.style.display = 'block';
+                
+                setTimeout(() => {
+                    alertDiv.style.display = 'none';
+                }, 3000);
+            }
+        }
+
+        // Initialize
+        window.addEventListener('DOMContentLoaded', function() {
+            initStorage();
+            loadProducts();
+            updateCartCount();
+            
+            // Check if user is logged in
+            const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+            if (currentUser) {
+                // Update UI for logged in user
+                const userActions = document.getElementById('userActions');
+                if (userActions) {
+                    userActions.innerHTML = `
+                        <span style="color: white; margin-right: 10px;">Welcome, ${currentUser.name}</span>
+                        <a href="#" class="btn btn-secondary" onclick="showUserOrders()">
+                            <i class="fas fa-shopping-cart"></i> My Orders
+                        </a>
+                        <a href="#" class="btn btn-primary" onclick="logout()">
+                            <i class="fas fa-sign-out-alt"></i> Logout
+                        </a>
+                        <div class="cart-badge">
+                            <a href="#" onclick="showCart()">
+                                <i class="fas fa-shopping-cart"></i>
+                            </a>
+                            <span class="cart-count" id="cartCount">0</span>
+                        </div>
+                    `;
+                }
+            }
+        });
+
+        function logout() {
+            localStorage.removeItem('currentUser');
+            window.location.reload();
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            if (event.target.classList.contains('modal')) {
+                event.target.style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>
